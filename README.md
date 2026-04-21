@@ -1,84 +1,85 @@
 # MiniLang
 
-This project is a **Toy Language Interpreter** implemented in Java, developed incrementally in 3 months.
+## Overview
 
-The interpreter executes a simple custom language featuring variables, expressions, control flow, file operations, heap management, concurrency, and type checking.
+MiniLang is a Java-based interpreter for a custom programming language, developed over 2 months.
+
+The project focuses on program execution at runtime, implementing a full execution engine with memory management, concurrency, and static type checking.
+
+Programs are constructed directly as Abstract Syntax Trees (ASTs) (no parser), allowing focus on execution logic and system design.(parser in making)
 
 ---
-### Language Support
+
+## Language Features
 
 * Variable declarations (`int`, `bool`, `string`, references)
 * Arithmetic expressions (`+`, `-`, `*`, `/`)
-* Logical expressions (`and`, `or`)
+* Logical expressions (`and`, `or`, `not`)
 * Relational expressions (`<`, `<=`, `==`, `!=`, `>`, `>=`)
-* Conditional statements (`if-then-else`)
-* Looping (`while`)
-* Print statements
-* No-op statements (`nop`)
 
-### Program Execution Model
+### Control Flow
 
-Each program is executed using a **Program State**, composed of:
-* **Execution Stack** – controls execution flow
-* **Symbol Table** – stores variable bindings
-* **Output List** – stores printed values
-* **File Table** – manages opened files
-* **Heap Table** – handles dynamic memory allocation
-
-### File Operations
-
-* Open file (`openRFile`)
-* Read from file (`readFile`)
-* Close file (`closeRFile`)
-
-Files are managed through a dedicated **FileTable**, mapping filenames to file descriptors .
-
-### Heap Memory Management
-
-* Reference types (`RefType`)
-* Heap allocation (`new`)
-* Heap read (`rH`)
-* Heap write (`wH`)
-* Garbage collection
-
-The heap is implemented as a dynamic memory structure with address-based access .
+* `if-then-else`
+* `switch`
+* Loops: `while`, `for`, `repeat`
 
 ### Concurrency
 
-* Multi-threaded execution via `fork`
-* Multiple program states running in parallel
-* Shared heap, output, and file table
-* Thread-safe execution using `ExecutorService`
+* `fork` (multi-threaded execution)
+* `sleep`, `wait`
 
-Concurrency support is introduced by allowing the interpreter to manage multiple execution contexts simultaneously .
+### File Operations
 
-### Static Type Checking
+* `openRFile`
+* `readFile`
+* `closeRFile`
 
-* Prevents invalid programs before execution
-* Ensures type safety for:
-  * Assignments
-  * Expressions
-  * Control flow statements
+### Heap Memory
 
-Type checking is performed before program execution begins .
+* Allocation: `new`
+* Read: `rH`
+* Write: `wH`
+* Garbage collection
+
+### Other
+
+* `print`
+* `nop`
+
+---
+
+## Execution Model
+
+Each program runs using a Program State composed of:
+
+* Execution Stack – controls execution flow
+* Symbol Table – stores variables and values
+* Output List – stores printed results
+* File Table – manages opened files
+* Heap Table – handles dynamic memory
+
+---
+
+## Interfaces
 
 ### Console Interface
 
-* Menu-based system
-* Run predefined example programs
-* Step-by-step execution logging
+* Menu-driven program execution
+* Step-by-step execution with logging
 
 ### GUI (JavaFX)
 
-* Program selection window
-* Live visualization of:
+* Program selection
+* Visualization of:
 
   * Execution stack
   * Symbol table
   * Heap
   * Output
   * File table
-* Step-by-step execution via button
+* Step-by-step execution control
+
+---
 
 ## How to Run
 
@@ -96,7 +97,7 @@ Type checking is performed before program execution begins .
    cd MiniLang
    ```
 
-2. Compile the project:
+2. Compile:
 
    ```bash
    javac Main.java
@@ -108,8 +109,11 @@ Type checking is performed before program execution begins .
    java Main
    ```
 
-4. (Optional) Launch GUI version:
+4. Run GUI:
 
    ```bash
    java MainGUI
    ```
+
+---
+
