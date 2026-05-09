@@ -27,7 +27,8 @@ Programs are constructed directly as Abstract Syntax Trees (ASTs) (no parser), a
 
 * `fork` (multi-threaded execution)
 * `sleep`, `wait`
-
+* other concurrency features for this project can be found  [here](https://github.com/BalaciSofia/MiniLang-Concurrency)
+  
 ### File Operations
 
 * `openRFile`
